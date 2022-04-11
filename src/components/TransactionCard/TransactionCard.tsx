@@ -1,7 +1,13 @@
-import React from 'react';
+import { FC } from 'react';
+import { ITransaction } from '../../types/transaction';
+import './index.scss';
 
-const TransactionCard = () => {
-  return <div>TransactionCard</div>;
+interface TransactionCardProps {
+  transaction: ITransaction;
+}
+
+const TransactionCard: FC<TransactionCardProps> = ({ transaction }) => {
+  return <div className="transaction">{transaction.label}</div>;
 };
 
 export default TransactionCard;

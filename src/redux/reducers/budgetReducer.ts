@@ -5,7 +5,16 @@ export interface BudgetState {
 }
 
 const initialState: BudgetState = {
-  budgets: [],
+  budgets: [
+    {
+      id: '1',
+      label: 'Food',
+    },
+    {
+      id: '2',
+      label: 'Gaming',
+    },
+  ],
 };
 
 const budgetReducer = (

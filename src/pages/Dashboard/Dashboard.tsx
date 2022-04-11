@@ -1,7 +1,13 @@
 import React from 'react';
+import BadgetContainer from '../../containers/BadgetContainer';
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <div>Dashboard</div>
+      <BadgetContainer />
+    </div>
+  );
 };
 
 export default Dashboard;
