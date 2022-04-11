@@ -9,6 +9,8 @@ interface BudgetCardProps {
 }
 
 const BudgetCard: FC<BudgetCardProps> = ({ label, transactions }) => {
+  // add transaction modal here ?
+
   return (
     <div className="card">
       <h2 className="card__title">{label}</h2>
