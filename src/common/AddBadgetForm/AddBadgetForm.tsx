@@ -43,7 +43,7 @@ const AddBadgetForm: FC<AddBadgetFormProps> = ({ toggle }) => {
         value={badgetName}
         onChange={handleChange}
       />
-      <Button label="create" type="submit" onClick={handleSubmit} />
+      <Button label="create" type="submit" />
     </form>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BudgetCard, AddBadgetForm } from '../common';
+import { BudgetCard, AddBadgetForm, RemoveBadgetForm } from '../common';
 import { Modal, Button } from '../components';
 import useTypedSelector from '../hooks/useTypedSelector';
 import { filterByField } from '../utils/helpers';
@@ -11,12 +11,16 @@ const BadgetContainer = () => {
   const { budgets } = useTypedSelector((store) => store.budgets);
   const { transactions } = useTypedSelector((store) => store.transactions);
   const [isOpen, toggle] = useToggle();
-
-  // add category modal here
+  const [isOpen2, toggle2] = useToggle(); // maybe fix
 
   return (
     <div className="container">
-      <Button label="Add badget" onClick={toggle} />
+      <Button label="Add badget" onClick={toggle2} />
+      <Button
+        label="Remove badget"
+        onClick={toggle}
+        style={{ marginLeft: '2rem' }}
+      />
       <div className="cards">
         {budgets.map(({ id, label }) => (
           <BudgetCard
@@ -31,8 +35,15 @@ const BadgetContainer = () => {
           />
         ))}
       </div>
-      <Modal isOpen={isOpen} close={toggle}>
-        <AddBadgetForm toggle={toggle} />
+      <Modal isOpen={isOpen} close={toggle} header="Remove budgets">
+        <RemoveBadgetForm
+          toggle={toggle}
+          budgets={budgets}
+          transactions={transactions}
+        />
+      </Modal>
+      <Modal isOpen={isOpen2} close={toggle2} header="Add budget">
+        <AddBadgetForm toggle={toggle2} />
       </Modal>
     </div>
   );

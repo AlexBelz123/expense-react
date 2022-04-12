@@ -34,7 +34,7 @@ const BudgetCard: FC<BudgetCardProps> = ({ budgetId, label, transactions }) => {
       >
         {showTransactions ? 'Hide Transactions' : 'Show transactions'}
       </a>
-      <Modal isOpen={isOpen} close={toggle}>
+      <Modal isOpen={isOpen} close={toggle} header="Add transaction">
         <AddTransactionForm budgetId={budgetId} toggle={toggle} />
       </Modal>
     </div>
