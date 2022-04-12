@@ -19,7 +19,7 @@ interface LineChartGraphProps {
 const LineChartGraph: FC<LineChartGraphProps> = ({ data, budgetLabel }) => {
   return (
     <div>
-      <h4>{budgetLabel}</h4>
+      <h4 className="graph-header">{budgetLabel}</h4>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}

@@ -16,7 +16,7 @@ const AddTransactionForm: FC<AddTransactionFormProps> = ({
 }) => {
   const [transaction, setTransaction] = useState({
     label: '',
-    date: new Date(Date.now()),
+    date: new Date(Date.now()).toDateString(),
     amount: 0,
     category: budgetId,
   });

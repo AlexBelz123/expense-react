@@ -20,7 +20,7 @@ const generateData = (budgetId: string, transactions: ITransaction[]) => {
 
   currentBudgetTransactions.forEach((tsc) => {
     const { label, date, amount } = tsc;
-    data.push({ label, date: date.toDateString(), amount });
+    data.push({ label, date, amount });
   });
   return data;
 };
