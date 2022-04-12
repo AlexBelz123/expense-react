@@ -1,5 +1,5 @@
 import React from 'react';
-import { BudgetCard } from '../common';
+import { BudgetCard, AddBadgetForm } from '../common';
 import { Modal, Button } from '../components';
 import useTypedSelector from '../hooks/useTypedSelector';
 import { filterByField } from '../utils/helpers';
@@ -21,6 +21,7 @@ const BadgetContainer = () => {
         {budgets.map(({ id, label }) => (
           <BudgetCard
             key={id}
+            budgetId={id}
             label={label}
             transactions={filterByField<ITransaction, 'category'>(
               id,
@@ -31,7 +32,7 @@ const BadgetContainer = () => {
         ))}
       </div>
       <Modal isOpen={isOpen} close={toggle}>
-        Some modal content
+        <AddBadgetForm toggle={toggle} />
       </Modal>
     </div>
   );

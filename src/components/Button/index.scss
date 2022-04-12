@@ -5,9 +5,11 @@ $color: #0cf;
   padding: 0.75rem 1.25rem;
   border-radius: 10rem;
   color: #fff;
+  outline: none;
   text-transform: uppercase;
-  text-decoration: none;
   font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
   letter-spacing: 0.15rem;
   transition: all 0.3s;
   position: relative;
@@ -35,6 +37,22 @@ $color: #0cf;
     transition: all 0.3s;
     border-radius: 10rem;
     z-index: -1;
+  }
+  &:hover {
+    color: #fff;
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+.light {
+  color: $color;
+  &:after {
+    background-color: #fff;
+  }
+  &:before {
+    background-color: darken($color, 25%);
   }
   &:hover {
     color: #fff;

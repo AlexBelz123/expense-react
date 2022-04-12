@@ -1,16 +1,27 @@
 import React, { FC } from 'react';
 import './index.scss';
 
-interface ButtonProps {
+type ButtonMode = 'dark' | 'light';
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
-  onClick: () => void;
+  onClick?: (e?: any) => void;
+  mode?: ButtonMode;
 }
 
-const Button: FC<ButtonProps> = ({ label, onClick }) => {
+const Button: FC<ButtonProps> = ({
+  label,
+  onClick,
+  mode = 'dark',
+  ...props
+}) => {
   return (
-    <a href="#" className="button" onClick={onClick}>
+    <button
+      className={`button ${mode === 'light' ? 'light' : ''}`}
+      onClick={onClick}
+      {...props}
+    >
       {label}
-    </a>
+    </button>
   );
 };
 
