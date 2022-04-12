@@ -5,10 +5,6 @@ export interface ITransaction {
   amount: number;
   category: string; // ref to category id
 }
-// export interface IBudget {
-//   id: string;
-//   label: string;
-// }
 
 export enum TransactionTypes {
   INITIALIZE_TRANSACTIONS = 'INITIALIZE_TRANSACTIONS',

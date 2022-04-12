@@ -13,11 +13,13 @@ import { IBudgetGraphData } from './Graph';
 
 interface LineChartGraphProps {
   data: IBudgetGraphData[];
+  budgetLabel: string;
 }
 
-const LineChartGraph: FC<LineChartGraphProps> = ({ data }) => {
+const LineChartGraph: FC<LineChartGraphProps> = ({ data, budgetLabel }) => {
   return (
-    <div className="graph-container">
+    <div>
+      <h4>{budgetLabel}</h4>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
@@ -37,10 +39,11 @@ const LineChartGraph: FC<LineChartGraphProps> = ({ data }) => {
           <Legend />
           <Line
             type="monotone"
-            dataKey="totalSpends"
-            stroke="#8884d8"
+            dataKey="amount"
+            stroke="#0cf"
             activeDot={{ r: 8 }}
           />
+          <Line type="monotone" dataKey="date" stroke="#82ca9d" />
         </LineChart>
       </ResponsiveContainer>
     </div>

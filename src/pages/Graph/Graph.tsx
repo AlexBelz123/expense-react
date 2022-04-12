@@ -1,34 +1,27 @@
 import React from 'react';
 import LineChartGraph from './LineChartGraph';
 import useTypedSelector from '../../hooks/useTypedSelector';
-import { IBudget } from '../../types/budget';
 import { ITransaction } from '../../types/transaction';
-import { filterByField } from '../../utils/helpers';
 import './index.scss';
 
 export interface IBudgetGraphData {
   label: string;
-  totalSpends: number;
+  date: string;
+  amount: number;
 }
 
-const generateData = (budgets: IBudget[], transactions: ITransaction[]) => {
+// helper function
+const generateData = (budgetId: string, transactions: ITransaction[]) => {
   const data: IBudgetGraphData[] = [];
 
-  budgets.forEach((budget) => {
-    const currentTransactions = filterByField<ITransaction, 'category'>(
-      budget.id,
-      'category',
-      transactions
-    );
+  const currentBudgetTransactions = transactions.filter(
+    (trc) => trc.category === budgetId
+  );
 
-    const totalSpends = currentTransactions.reduce(
-      (prev, current) => prev + current.amount,
-      0
-    );
-
-    data.push({ label: budget.label, totalSpends });
+  currentBudgetTransactions.forEach((tsc) => {
+    const { label, date, amount } = tsc;
+    data.push({ label, date: date.toDateString(), amount });
   });
-
   return data;
 };
 
@@ -39,7 +32,13 @@ const Graph = () => {
 
   return (
     <div className="graph-container">
-      <LineChartGraph data={generateData(budgets, transactions)} />
+      {budgets.map((budget) => (
+        <LineChartGraph
+          key={budget.id}
+          budgetLabel={budget.label}
+          data={generateData(budget.id, transactions)}
+        />
+      ))}
     </div>
   );
 };

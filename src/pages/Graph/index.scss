@@ -1,4 +1,7 @@
 .graph-container {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  min-height: 300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
 }
